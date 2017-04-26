@@ -16,6 +16,11 @@ no_std support can be enabled by disabling default features (specifically "std")
 
 #![cfg_attr(not(feature = "std"), no_std)]
 
+// When compiled for the rustc compiler itself we want to make sure that this is
+// an unstable crate
+#![cfg_attr(rustbuild, feature(staged_api, rustc_private))]
+#![cfg_attr(rustbuild, unstable(feature = "rustc_private", issue = "27812"))]
+
 #[cfg(feature = "std")]
 extern crate core;
 
