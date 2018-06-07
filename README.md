@@ -11,7 +11,13 @@ Enable the "alloc" feature (with default-features disabled) to have this trait b
 * `alloc::arc::Arc`
 * `alloc::string::String`
 
-Enable the "spin_mutex" feature (with default-features disabled) to have this trait be implemented for the following types from the [spin](https://crates.io/crates/spin) crate:
-* `spin::MutexGuard`
-* `spin::RwLockReadGuard`
-* `spin::RwLockWriteGuard`
+For example, this crate can be built with alloc support via the following command:    
+`cargo build --no-default-features --features alloc`
+
+Or added as a `Cargo.toml` dependency as follows:
+```
+[dependencies.stable_deref_trait]
+version = "<version>"
+default-features = false
+features = [ "alloc" ]
+```
