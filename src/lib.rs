@@ -147,7 +147,7 @@ use alloc::rc::Rc;
 #[cfg(all(feature = "std", not(feature = "alloc")))]
 use std::sync::Arc;
 #[cfg(all(not(feature = "std"), feature = "alloc"))]
-use alloc::arc::Arc;
+use alloc::sync::Arc;
 
 #[cfg(all(feature = "std", not(feature = "alloc")))]
 use std::vec::Vec;
