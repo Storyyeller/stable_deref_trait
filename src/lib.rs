@@ -134,27 +134,27 @@ pub unsafe trait CloneStableDeref: StableDeref + Clone {}
 // std types integration
 /////////////////////////////////////////////////////////////////////////////
 
-#[cfg(all(feature = "std", not(feature = "alloc")))]
+#[cfg(feature = "std")]
 use std::boxed::Box;
 #[cfg(all(not(feature = "std"), feature = "alloc"))]
 use alloc::boxed::Box;
 
-#[cfg(all(feature = "std", not(feature = "alloc")))]
+#[cfg(feature = "std")]
 use std::rc::Rc;
 #[cfg(all(not(feature = "std"), feature = "alloc"))]
 use alloc::rc::Rc;
 
-#[cfg(all(feature = "std", not(feature = "alloc")))]
+#[cfg(feature = "std")]
 use std::sync::Arc;
 #[cfg(all(not(feature = "std"), feature = "alloc"))]
 use alloc::sync::Arc;
 
-#[cfg(all(feature = "std", not(feature = "alloc")))]
+#[cfg(feature = "std")]
 use std::vec::Vec;
 #[cfg(all(not(feature = "std"), feature = "alloc"))]
 use alloc::vec::Vec;
 
-#[cfg(all(feature = "std", not(feature = "alloc")))]
+#[cfg(feature = "std")]
 use std::string::String;
 #[cfg(all(not(feature = "std"), feature = "alloc"))]
 use alloc::string::String;
