@@ -10,6 +10,7 @@ Enable the "alloc" feature (with default-features disabled) to have this trait b
 * `alloc::rc::Rc`
 * `alloc::arc::Arc`
 * `alloc::string::String`
+* `alloc::path::PathBuf`
 
 For example, this crate can be built with alloc support via the following command:
 `cargo build --no-default-features --features alloc`
