@@ -13,5 +13,5 @@ An unsafe marker trait for types like Box and Rc that dereference to a stable ad
 
 [features]
 default = ["std"]
-std = []
+std = ["alloc"]
 alloc = []
