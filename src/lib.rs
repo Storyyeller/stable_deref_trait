@@ -14,8 +14,6 @@ It is intended to be used by crates such as [owning_ref](https://crates.io/crate
 no_std support can be enabled by disabling default features (specifically "std"). In this case, the trait will not be implemented for the std types mentioned above, but you can still use it for your own types.
 */
 
-#![cfg_attr(feature = "alloc", feature(alloc))]
-
 #![cfg_attr(not(feature = "std"), no_std)]
 
 #[cfg(feature = "std")]
