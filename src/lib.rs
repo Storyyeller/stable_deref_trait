@@ -143,7 +143,10 @@ use alloc::vec::Vec;
 #[cfg(feature = "alloc")]
 use alloc::string::String;
 
-
+#[cfg(feature = "std")]
+use std::ffi::{CString, OsString};
+#[cfg(feature = "std")]
+use std::path::PathBuf;
 #[cfg(feature = "std")]
 use std::sync::{MutexGuard, RwLockReadGuard, RwLockWriteGuard};
 
@@ -156,6 +159,12 @@ unsafe impl<T: ?Sized> StableDeref for Box<T> {}
 unsafe impl<T> StableDeref for Vec<T> {}
 #[cfg(feature = "alloc")]
 unsafe impl StableDeref for String {}
+#[cfg(feature = "std")]
+unsafe impl StableDeref for CString {}
+#[cfg(feature = "std")]
+unsafe impl StableDeref for OsString {}
+#[cfg(feature = "std")]
+unsafe impl StableDeref for PathBuf {}
 
 #[cfg(feature = "alloc")]
 unsafe impl<T: ?Sized> StableDeref for Rc<T> {}
