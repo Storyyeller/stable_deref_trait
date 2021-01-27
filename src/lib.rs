@@ -142,11 +142,13 @@ use alloc::sync::Arc;
 use alloc::vec::Vec;
 #[cfg(feature = "alloc")]
 use alloc::string::String;
+#[cfg(feature = "alloc")]
+use alloc::borrow::Cow;
 
 #[cfg(feature = "std")]
-use std::ffi::{CString, OsString};
+use std::ffi::{CStr, CString, OsStr, OsString};
 #[cfg(feature = "std")]
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 #[cfg(feature = "std")]
 use std::sync::{MutexGuard, RwLockReadGuard, RwLockWriteGuard};
 
@@ -165,6 +167,17 @@ unsafe impl StableDeref for CString {}
 unsafe impl StableDeref for OsString {}
 #[cfg(feature = "std")]
 unsafe impl StableDeref for PathBuf {}
+
+#[cfg(feature = "alloc")]
+unsafe impl<'a> StableDeref for Cow<'a, str> {}
+#[cfg(feature = "alloc")]
+unsafe impl<'a, T: Clone> StableDeref for Cow<'a, [T]> {}
+#[cfg(feature = "std")]
+unsafe impl<'a> StableDeref for Cow<'a, Path> {}
+#[cfg(feature = "std")]
+unsafe impl<'a> StableDeref for Cow<'a, CStr> {}
+#[cfg(feature = "std")]
+unsafe impl<'a> StableDeref for Cow<'a, OsStr> {}
 
 #[cfg(feature = "alloc")]
 unsafe impl<T: ?Sized> StableDeref for Rc<T> {}
