@@ -136,7 +136,7 @@ pub unsafe trait CloneStableDeref: StableDeref + Clone {}
 use alloc::boxed::Box;
 #[cfg(feature = "alloc")]
 use alloc::rc::Rc;
-#[cfg(feature = "alloc")]
+#[cfg(all(feature = "alloc", target_has_atomic = "ptr"))]
 use alloc::sync::Arc;
 #[cfg(feature = "alloc")]
 use alloc::vec::Vec;
@@ -183,9 +183,9 @@ unsafe impl<'a> StableDeref for Cow<'a, OsStr> {}
 unsafe impl<T: ?Sized> StableDeref for Rc<T> {}
 #[cfg(feature = "alloc")]
 unsafe impl<T: ?Sized> CloneStableDeref for Rc<T> {}
-#[cfg(feature = "alloc")]
+#[cfg(all(feature = "alloc", target_has_atomic = "ptr"))]
 unsafe impl<T: ?Sized> StableDeref for Arc<T> {}
-#[cfg(feature = "alloc")]
+#[cfg(all(feature = "alloc", target_has_atomic = "ptr"))]
 unsafe impl<T: ?Sized> CloneStableDeref for Arc<T> {}
 
 unsafe impl<'a, T: ?Sized> StableDeref for Ref<'a, T> {}
